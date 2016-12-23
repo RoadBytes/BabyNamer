@@ -36,6 +36,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'timecop'
   gem 'webmock'
+  gem 'shoulda-matchers'
 end
 
 group :development do
