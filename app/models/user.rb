@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def handle
-    name.blank? ? self.email : self.name
+    name.blank? ? email : name
   end
 end
