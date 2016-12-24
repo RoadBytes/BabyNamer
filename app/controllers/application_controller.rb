@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user
 
   def block_client
-    flash[:danger] = "Not Allowed"
+    flash[:notice] = 'Not Allowed'
     redirect_to root_path
   end
 
   def logged_in?
-    !!session[:user_id]
+    !session[:user_id] == false
   end
 
   def current_user
