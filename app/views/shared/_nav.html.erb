@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  <%= link_to 'New Baby Name', new_baby_name_path, id: 'new_baby_name' %>
+  <%= link_to 'Sign Out', session_path, method: :delete, id: 'destroy_session' %>
+<% else %>
+  <%= link_to 'Sign Up', new_user_path, id: 'new_user' %>
+  <%= link_to 'Sign In', new_session_path, id: 'new_session' %>
+<% end %>

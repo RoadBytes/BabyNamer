@@ -21,7 +21,7 @@ feature 'User adds new BabyName', type: 'feature' do
 
   def navigate_to_new_baby_name_form
     visit '/'
-    # sign in
+    sign_in_user
     click_link 'new_baby_name'
   end
 
