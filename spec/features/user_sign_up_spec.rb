@@ -8,6 +8,7 @@ feature 'User Signs Up', type: 'feature' do
 
     verify_database
     verify_page_message
+    #iverify_signed_in
   end
 
   def navigate_to_new_user_form
@@ -16,10 +17,12 @@ feature 'User Signs Up', type: 'feature' do
   end
 
   def fill_in_new_user_form
-    fill_in 'baby_name_name', with: 'Tallulah_1'
-    fill_in 'baby_name_background', with: "Bc I'm awesome"
+    fill_in 'user_name', with: 'Michelle'
+    fill_in 'user_email', with: 'mona@gmail.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
 
-    click_button 'submit_new_baby_name'
+    click_button 'submit_user'
   end
 
   def verify_database
@@ -30,5 +33,9 @@ feature 'User Signs Up', type: 'feature' do
 
   def verify_page_message
     expect(page).to have_content 'Welcome Michelle'
+  end
+
+  def verify_signed_in
+    expect(page).to have_content 'Sign Out'
   end
 end
