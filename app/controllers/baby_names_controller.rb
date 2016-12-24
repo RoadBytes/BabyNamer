@@ -1,3 +1,4 @@
+# BabyName controller
 class BabyNamesController < ApplicationController
   before_action :set_baby_name, only: [:show, :edit, :update, :destroy]
 
@@ -9,8 +10,7 @@ class BabyNamesController < ApplicationController
 
   # GET /baby_names/1
   # GET /baby_names/1.json
-  def show
-  end
+  def show; end
 
   # GET /baby_names/new
   def new
@@ -18,8 +18,7 @@ class BabyNamesController < ApplicationController
   end
 
   # GET /baby_names/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /baby_names
   # POST /baby_names.json
@@ -28,11 +27,11 @@ class BabyNamesController < ApplicationController
 
     respond_to do |format|
       if @baby_name.save
-        format.html { redirect_to @baby_name, notice: 'Baby name was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @baby_name }
+        format.html do
+          redirect_to @baby_name, notice: 'Baby name was successfully created.'
+        end
       else
         format.html { render action: 'new' }
-        format.json { render json: @baby_name.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +41,11 @@ class BabyNamesController < ApplicationController
   def update
     respond_to do |format|
       if @baby_name.update(baby_name_params)
-        format.html { redirect_to @baby_name, notice: 'Baby name was successfully updated.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to @baby_name, notice: 'Baby name was successfully updated.'
+        end
       else
         format.html { render action: 'edit' }
-        format.json { render json: @baby_name.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,18 +56,19 @@ class BabyNamesController < ApplicationController
     @baby_name.destroy
     respond_to do |format|
       format.html { redirect_to baby_names_url }
-      format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_baby_name
-      @baby_name = BabyName.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def baby_name_params
-      params.require(:baby_name).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_baby_name
+    @baby_name = BabyName.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list
+  # through.
+  def baby_name_params
+    params.require(:baby_name).permit(:name)
+  end
 end

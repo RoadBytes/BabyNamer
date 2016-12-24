@@ -1,3 +1,4 @@
+# initial BabyName migration
 class CreateBabyNames < ActiveRecord::Migration
   def change
     create_table :baby_names do |t|
