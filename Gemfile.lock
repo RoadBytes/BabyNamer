@@ -41,6 +41,7 @@ GEM
     arel (6.0.3)
     bcrypt-ruby (3.0.1)
     builder (3.2.2)
+    byebug (9.0.6)
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
@@ -196,6 +197,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
+  byebug
   capybara-webkit
   coffee-rails (~> 4.0.0)
   database_cleaner

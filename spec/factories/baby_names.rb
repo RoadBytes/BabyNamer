@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :baby_name do
-    name 'MyString'
+    name       'Tallulah'
+    background 'This is the best name ever'
   end
 end

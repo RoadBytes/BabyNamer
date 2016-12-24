@@ -16,7 +16,10 @@
         <td><%= baby_name.name %></td>
         <td><%= link_to 'Show', baby_name %></td>
         <td><%= link_to 'Edit', edit_baby_name_path(baby_name) %></td>
-        <td><%= link_to 'Destroy', baby_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', baby_name,
+                                   method: :delete,
+                                   data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Baby name', new_baby_name_path %>
+<%= link_to 'New Baby Name', new_baby_name_path, id: 'new_baby_name' %>

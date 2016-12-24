@@ -15,7 +15,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :background %><br>
+    <%= f.text_area :background %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit id: 'submit_new_baby_name' %>
   </div>
 <% end %>
