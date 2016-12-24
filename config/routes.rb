@@ -3,4 +3,5 @@ BabyNamer::Application.routes.draw do
 
   resources :baby_names
   resources :users, except: :destroy
+  resources :sessions, only: [:new, :create, :destroy]
 end
