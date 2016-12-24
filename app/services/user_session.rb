@@ -7,19 +7,15 @@ class UserSession
     @error_path = options[:error_path]
     @email      = options[:input][:email]
     @password   = options[:input][:password]
-    @user       = User.find_by(email: @email)
-  end
-
-  def valid?
-    user && user.authenticate(password)
+    @user       = query_user
   end
 
   def id
-    user? ? user.id : nil
+    user.id if user
   end
 
   def message
-    if user?
+    if user
       "Welcome #{user.handle}"
     else
       'Error please try again'
@@ -27,7 +23,7 @@ class UserSession
   end
 
   def path
-    if user?
+    if user
       @happy_path
     else
       @error_path
@@ -36,7 +32,8 @@ class UserSession
 
   private
 
-  def user?
-    user
+  def query_user
+    user  = User.find_by(email: @email)
+    @user = user && user.authenticate(password)
   end
 end
