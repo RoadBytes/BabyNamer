@@ -36,7 +36,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'timecop'
   gem 'webmock'
-  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -46,6 +45,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'byebug'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.4.0'
 end
