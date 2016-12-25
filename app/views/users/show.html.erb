@@ -1,0 +1,7 @@
+<h1>User Show</h1>
+
+<p><%= @user.handle %></p>
+
+<% @user.baby_names.each do |baby_name| %>
+  <p><%= link_to baby_name.name, baby_name_path(baby_name) %> </p>
+<% end %>
