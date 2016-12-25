@@ -43,6 +43,7 @@ feature 'User adds new BabyName', type: 'feature' do
     expect(BabyName.all.size).to eq 1
     expect(BabyName.first[:name]).to eq 'Tallulah_1'
     expect(BabyName.first[:background]).to eq "Bc I'm awesome"
+    expect(BabyName.first.user).to eq User.first
   end
 
   def verify_database_empty

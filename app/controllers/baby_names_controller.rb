@@ -51,6 +51,6 @@ class BabyNamesController < ApplicationController
   end
 
   def baby_name_params
-    params.require(:baby_name).permit(:name, :background)
+    params.require(:baby_name).permit(:name, :background, :user_id)
   end
 end

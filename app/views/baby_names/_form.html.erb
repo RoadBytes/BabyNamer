@@ -13,6 +13,7 @@
 <%= simple_form_for @baby_name do |f| %>
   <%= f.input :name %>
   <%= f.input :background %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
 
   <%= f.button :submit, id: 'submit_new_baby_name' %>
 <% end %>
