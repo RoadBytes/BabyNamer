@@ -6,7 +6,8 @@ feature 'User adds new BabyName', type: 'feature' do
 
     fill_in_new_baby_name_form
 
-    verify_database
+    verify_baby_name_database
+    verify_user_association
     verify_index_page
   end
 
@@ -39,10 +40,14 @@ feature 'User adds new BabyName', type: 'feature' do
     click_button 'submit_new_baby_name'
   end
 
-  def verify_database
+  def verify_baby_name_database
+    baby_name = BabyName.first
     expect(BabyName.all.size).to eq 1
-    expect(BabyName.first[:name]).to eq 'Tallulah_1'
-    expect(BabyName.first[:background]).to eq "Bc I'm awesome"
+    expect(baby_name.name).to eq 'Tallulah_1'
+    expect(baby_name.background).to eq "Bc I'm awesome"
+  end
+
+  def verify_user_association
     expect(BabyName.first.user).to eq User.first
   end
 
