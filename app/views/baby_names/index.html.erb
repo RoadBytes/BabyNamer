@@ -4,15 +4,38 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th colspan='3'></th>
+      <th>Vote Count</th>
+      <th colspan='2'></th>
     </tr>
   </thead>
 
   <tbody>
     <% @baby_names.each do |baby_name| %>
       <tr>
-        <td><%= link_to baby_name.name, baby_name %></td>
-        <td><%= link_to 'Show', baby_name %></td>
+        <td colspan='3'><%= link_to baby_name.name, baby_name %></td>
+        <td colspan='2'><%= baby_name.vote_count %></td>
+        <td>
+          <%= link_to(votes_path(baby_name,
+                      vote: { vote: 'true',
+                              voteable_type: 'BabyName',
+                              voteable_id: baby_name.id }),
+                      method: 'post',
+                      id: "baby_name_up_vote_#{baby_name.id}") do %>
+            <p>up vote</p>
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to(votes_path(baby_name,
+                      vote: { vote: 'false',
+                              voteable_type: 'BabyName',
+                              voteable_id: baby_name.id }),
+                      method: 'post',
+                      id: "baby_name_down_vote_#{baby_name.id}") do %>
+            <p>down vote</p>
+          <% end %>
+        </td>
 
         <% if logged_in? %>
           <td><%= link_to 'Edit', edit_baby_name_path(baby_name) %></td>

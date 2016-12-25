@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 1.2'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
+# I made this gem
+gem 'vote_gem_jay'
+
 gem 'pg'
 gem 'puma'
 gem 'simple_form'

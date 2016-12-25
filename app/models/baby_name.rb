@@ -1,5 +1,7 @@
 # class to handle BabyName
 class BabyName < ActiveRecord::Base
+  include VoteGemJay
+
   validates :name, presence: true
   belongs_to :user
 
