@@ -30,7 +30,7 @@ feature 'User Sign In', type: 'feature' do
 
   def verify_valid_data
     expect(page).to have_content 'Welcome'
-    # expect(page).to have_content 'Sign Out'
+    expect(page).to have_content 'Sign Out'
   end
 
   def fill_in_new_session_form_invalid
@@ -41,6 +41,6 @@ feature 'User Sign In', type: 'feature' do
 
   def verify_invalid_data
     expect(page).to have_content 'Error please try again'
-    # expect(page).to have_content 'Sign Out'
+    expect(page).to_not have_content 'Sign Out'
   end
 end

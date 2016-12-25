@@ -8,7 +8,7 @@ feature 'User Signs Up', type: 'feature' do
 
     verify_database
     verify_page_message
-    # verify_signed_in
+    verify_signed_in
   end
 
   def navigate_to_new_user_form

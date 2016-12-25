@@ -1,6 +1,7 @@
 # BabyName controller
 class BabyNamesController < ApplicationController
   before_action :set_baby_name, only: [:show, :edit, :update, :destroy]
+  before_action :require_user,  only: [:edit, :update, :destroy]
 
   def index
     @baby_names = BabyName.all

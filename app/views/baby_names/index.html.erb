@@ -11,20 +11,19 @@
   <tbody>
     <% @baby_names.each do |baby_name| %>
       <tr>
-        <td><%= baby_name.name %></td>
+        <td><%= link_to baby_name.name, baby_name %></td>
         <td><%= link_to 'Show', baby_name %></td>
-        <td><%= link_to 'Edit', edit_baby_name_path(baby_name) %></td>
-        <td><%= link_to 'Destroy', baby_name,
-                                   method: :delete,
-                                   data: { confirm: 'Are you sure?' } %>
-        </td>
+
+        <% if logged_in? %>
+          <td><%= link_to 'Edit', edit_baby_name_path(baby_name) %></td>
+          <td><%= link_to 'Destroy', baby_name,
+                                     method: :delete,
+                                     data: { confirm: 'Are you sure?' } %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Baby Name', new_baby_name_path, id: 'new_baby_name' %>
-<%= link_to 'Sign Up', new_user_path, id: 'new_user' %>
-<%= link_to 'Sign In', new_session_path, id: 'new_session' %>

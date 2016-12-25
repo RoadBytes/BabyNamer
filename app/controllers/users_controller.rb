@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      user_handle = @user.handle
-      redirect_to root_path, notice: "Welcome #{user_handle}"
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "Welcome #{@user.handle}"
     else
       render action: 'new'
     end
