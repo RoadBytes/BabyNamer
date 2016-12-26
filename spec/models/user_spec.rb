@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:password) }
   it { should have_many(:baby_names) }
   it { should have_many(:comments) }
+  it { should have_many(:votes) }
 
   describe 'has_secure_password method' do
     it 'validates password' do
@@ -35,6 +36,39 @@ RSpec.describe User, type: :model do
       unnamed = FactoryGirl.create(:user, name: '', email: 'asdf@asdf.com')
 
       expect(unnamed.handle).to eq 'asdf@asdf.com'
+    end
+  end
+
+  describe '#votes_for_today' do
+    it 'starts with 10 votes' do
+      user = FactoryGirl.create(:user)
+
+      expect(user.votes_for_today).to eq 10
+    end
+
+    it 'decrements as votes are made' do
+      user      = FactoryGirl.create(:user)
+      baby_name = FactoryGirl.create(:baby_name)
+
+      FactoryGirl.create(:vote,
+                        voteable: baby_name,
+                        user_id:  user.id)
+
+      expect(user.votes_for_today).to eq 9
+    end
+
+    it 'resets on new day' do
+      user      = FactoryGirl.create(:user)
+      baby_name = FactoryGirl.create(:baby_name)
+
+      FactoryGirl.create(:vote,
+                        voteable: baby_name,
+                        user_id:  user.id)
+
+      # go to tomorrow
+      Timecop.freeze(Date.today + 1) do
+        expect(user.votes_for_today).to eq 10
+      end
     end
   end
 end
