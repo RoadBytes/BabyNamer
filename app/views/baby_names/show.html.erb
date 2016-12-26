@@ -9,14 +9,62 @@
 <p>
   <strong>Suggested By:</strong>
   <% if @baby_name.user %>
-    <%= link_to @baby_name.user_handle, user_path(@baby_name.user) %> |
+    <%= link_to @baby_name.user_handle, user_path(@baby_name.user) %>
   <% else %>
     <%= @baby_name.user_handle %>
   <% end %>
 </p>
 
 <% if logged_in? %>
-  <%= link_to 'Edit', edit_baby_name_path(@baby_name) %> |
+
+  <%= link_to 'Edit', edit_baby_name_path(@baby_name) %>
+  <div>
+    <%= simple_form_for :comment, { url: comments_path} do |f| %>
+      <%= f.label :body, 'Add a Comment' %>
+      <br>
+      <%= f.input_field :body,
+                  label: 'Add a Comment',
+                  as: :text,
+                  id: "baby_name_#{@baby_name.id}_comment" %>
+      <br>
+      <%= f.input :commentable_id,
+                  as: :hidden,
+                  input_html: { value: @baby_name.id } %>
+      <%= f.input :commentable_type,
+                  as: :hidden, input_html: { value: @baby_name.class } %>
+      <%= f.input :user_id,
+                  as: :hidden, input_html: { value: current_user.id } %>
+
+      <%= f.button :submit, id: 'submit_new_comment' %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= link_to 'All Names', baby_names_path %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th colspan='3'></th>
+      <th>Comment</th>
+      <th colspan='8'></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @baby_name.comments.each do |comment| %>
+      <tr>
+        <td colspan='3'>
+          <%= comment.creator.handle %>
+        </td>
+        <td colspan='8'>
+          <%= comment.body %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

@@ -3,17 +3,16 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan='3'></th>
-      <th>Vote Count</th>
-      <th colspan='2'></th>
+      <th colspan='3'>Name</th>
+      <th colspan='2'>Vote Count</th>
     </tr>
   </thead>
 
   <tbody>
     <% @baby_names.each do |baby_name| %>
       <tr>
-        <td colspan='3'><%= link_to baby_name.name, baby_name %></td>
+        <td colspan='3'><%= link_to baby_name.name, baby_name,
+                                    id: "show_baby_name_#{baby_name.id}" %></td>
         <td colspan='2'><%= baby_name.vote_count %></td>
         <td>
           <%= link_to(votes_path(baby_name,
