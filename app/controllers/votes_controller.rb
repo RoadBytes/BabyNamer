@@ -1,5 +1,7 @@
 # Voteable controller
 class VotesController < ApplicationController
+  before_action :require_user
+
   def create
     attributes = vote_params.merge(user_id: 1)
     Vote.create(attributes)

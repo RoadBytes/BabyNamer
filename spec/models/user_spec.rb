@@ -4,6 +4,7 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }
   it { should have_many(:baby_names) }
+  it { should have_many(:comments) }
 
   describe 'has_secure_password method' do
     it 'validates password' do
