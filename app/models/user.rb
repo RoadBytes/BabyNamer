@@ -10,8 +10,4 @@ class User < ActiveRecord::Base
   def handle
     name.blank? ? email : name
   end
-
-  def votes_for_today
-    10 - votes.where("created_at::date = ?", Date.today).count
-  end
 end
