@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   before_action :require_user
 
   def create
-    attributes = vote_params.merge(user_id: 1)
+    attributes = vote_params.merge(user_id: current_user.id)
     Vote.create(attributes)
 
     redirect_to baby_names_path
