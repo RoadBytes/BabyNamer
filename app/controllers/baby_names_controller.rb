@@ -26,21 +26,20 @@ class BabyNamesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @baby_name.update(baby_name_params)
-        format.html do
-          redirect_to @baby_name, notice: 'Baby name was successfully updated.'
-        end
-      else
-        format.html { render action: 'edit' }
-      end
+    if @baby_name.user == current_user && @baby_name.update(baby_name_params)
+      redirect_to @baby_name, notice: 'Baby name was successfully updated.'
+    else
+      flash.now[:notice] = 'Something went wrong'
+      render action: 'edit'
     end
   end
 
   def destroy
-    @baby_name.destroy
-    respond_to do |format|
-      format.html { redirect_to baby_names_url }
+    if @baby_name.user == current_user && @baby_name.destroy
+      redirect_to baby_names_url, notice: "#{@baby_name.name} Destroyed"
+    else
+      flash.now[:notice] = 'Something went wrong'
+      render action: 'edit'
     end
   end
 

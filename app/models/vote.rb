@@ -13,6 +13,10 @@ class Vote < ActiveRecord::Base
     where(user_id: user_id).where('created_at::date = ?', Date.today).count
   end
 
+  def self.votes_left_for_today(user_id)
+    10 - vote_count_today(user_id)
+  end
+
   def self.vote_available?(user_id)
     vote_count_today(user_id) < 10
   end

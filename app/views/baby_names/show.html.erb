@@ -16,8 +16,10 @@
 </p>
 
 <% if logged_in? %>
+  <% if @baby_name.user == current_user %>
+    <%= link_to 'Edit', edit_baby_name_path(@baby_name) %>
+  <% end %>
 
-  <%= link_to 'Edit', edit_baby_name_path(@baby_name) %>
   <div>
     <%= simple_form_for :comment, { url: comments_path} do |f| %>
       <%= f.label :body, 'Add a Comment' %>
@@ -42,7 +44,6 @@
 
 <%= link_to 'All Names', baby_names_path %>
 
-
 <table>
   <thead>
     <tr>
@@ -66,5 +67,4 @@
       </tr>
     <% end %>
   </tbody>
-
 </table>

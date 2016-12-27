@@ -1,15 +1,14 @@
-<h1>Listing Baby Names</h1>
+<h1>Baby Namer 1800</h1>
 
 <table>
   <thead>
     <tr>
-      <th colspan='3'>Name</th>
+      <th colspan='3'>Baby Name</th>
+      <th colspan='3'>Suggested By</th>
       <th colspan='2'>Vote Count</th>
       <% if logged_in? %>
         <th>Vote Up</th>
         <th>Vote Down</th>
-        <th></th>
-        <th></th>
       <% end %>
     </tr>
   </thead>
@@ -19,6 +18,8 @@
       <tr>
         <td colspan='3'><%= link_to baby_name.name, baby_name,
                                     id: "show_baby_name_#{baby_name.id}" %></td>
+        <td colspan='3'><%= link_to baby_name.user_handle, baby_name.user,
+                                    id: "show_user_#{baby_name.user.try(:id)}" %></td>
         <td colspan='2'><%= baby_name.vote_count %></td>
 
         <% if logged_in? %>
@@ -41,11 +42,6 @@
                         id: "baby_name_down_vote_#{baby_name.id}") do %>
               <p>down vote</p>
             <% end %>
-          </td>
-          <td><%= link_to 'Edit', edit_baby_name_path(baby_name) %></td>
-          <td><%= link_to 'Destroy', baby_name,
-                                     method: :delete,
-                                     data: { confirm: 'Are you sure?' } %>
           </td>
         <% end %>
       </tr>
