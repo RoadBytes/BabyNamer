@@ -11,7 +11,7 @@ class UserSession
   end
 
   def id
-    user.id if user
+    user.try(:id)
   end
 
   def message
