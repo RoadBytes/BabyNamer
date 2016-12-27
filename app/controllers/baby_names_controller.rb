@@ -4,7 +4,7 @@ class BabyNamesController < ApplicationController
   before_action :require_user,  only: [:edit, :update, :destroy]
 
   def index
-    @baby_names = BabyName.all
+    @baby_names = BabyName.all.sort_by(&:vote_count).reverse
   end
 
   def show; end

@@ -23,7 +23,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt'
 
 # I made this gem
 gem 'vote_gem_jay'
@@ -44,12 +44,14 @@ end
 group :development do
   gem 'quiet_assets'
   gem 'refills'
+  gem 'rubocop', '~> 0.46.0', require: false
   gem 'spring'
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
+  gem 'rb-readline'
   gem 'rspec-rails', '~> 3.4.0'
 end
 

@@ -2,3 +2,6 @@ AllCops:
   Exclude:
     - 'db/**'
     - 'db/migrate/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
