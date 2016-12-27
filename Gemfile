@@ -28,6 +28,7 @@ gem 'bcrypt'
 # I made this gem
 gem 'vote_gem_jay'
 
+gem 'bourbon'
 gem 'pg'
 gem 'puma'
 gem 'simple_form'
@@ -42,6 +43,7 @@ group :test do
 end
 
 group :development do
+  gem 'bitters'
   gem 'quiet_assets'
   gem 'refills'
   gem 'rubocop', '~> 0.46.0', require: false

@@ -41,6 +41,13 @@ GEM
     arel (6.0.3)
     ast (2.3.0)
     bcrypt (3.1.11)
+    bitters (1.0.0)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
+    bourbon (3.2.4)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     byebug (9.0.6)
     capybara (2.7.1)
@@ -212,6 +219,8 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  bitters
+  bourbon
   byebug
   capybara-webkit
   coffee-rails (~> 4.0.0)
