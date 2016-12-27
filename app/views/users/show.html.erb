@@ -1,7 +1,51 @@
-<h1>User Show</h1>
+<h1><%= @user.handle %>'s Suggested Names</h1>
 
-<p><%= @user.handle %></p>
+<h1>Suggested Names:</h1>
 
-<% @user.baby_names.each do |baby_name| %>
-  <p><%= link_to baby_name.name, baby_name_path(baby_name) %> </p>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Baby Name</th>
+      <th>Background</th>
+      <th>Vote Count</th>
+      <% if logged_in? %>
+        <th>Vote Up</th>
+        <th>Vote Down</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.baby_names.each do |baby_name| %>
+      <tr>
+        <td><%= link_to baby_name.name, baby_name,
+                                    id: "show_baby_name_#{baby_name.id}" %></td>
+        <td><%= baby_name.background %></td>
+        <td><%= baby_name.vote_count %></td>
+        <% if logged_in? %>
+          <td>
+            <%= link_to(votes_path(baby_name,
+                        vote: { vote: 'true',
+                                voteable_type: 'BabyName',
+                                voteable_id: baby_name.id }),
+                        method: 'post',
+                        id: "baby_name_up_vote_#{baby_name.id}") do %>
+              <p>up vote</p>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to(votes_path(baby_name,
+                        vote: { vote: 'false',
+                                voteable_type: 'BabyName',
+                                voteable_id: baby_name.id }),
+                        method: 'post',
+                        id: "baby_name_down_vote_#{baby_name.id}") do %>
+              <p>down vote</p>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
