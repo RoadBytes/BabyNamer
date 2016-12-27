@@ -7,8 +7,8 @@ require 'rails/all'
 Bundler.require(:default, Rails.env)
 
 module BabyNamer
+  # Settings in config/environments/* take precedence over those specified
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified
     # here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -22,5 +22,7 @@ module BabyNamer
     # config/locales/*.rb,yml are auto loaded. config.i18n.load_path +=
     # Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

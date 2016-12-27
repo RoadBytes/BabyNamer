@@ -35,7 +35,7 @@ RSpec.describe Vote, type: :model do
                          voteable: baby_name,
                          user_id:  user.id)
 
-      expect(Vote.vote_count_today(user)).to eq 1
+      expect(Vote.vote_count_today(user.id)).to eq 1
     end
 
     it 'resets on new day' do

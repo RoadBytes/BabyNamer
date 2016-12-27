@@ -6,6 +6,13 @@ RSpec.describe User, type: :model do
   it { should have_many(:baby_names) }
   it { should have_many(:comments) }
   it { should have_many(:votes) }
+  it { should have_attached_file(:profile_pic) }
+  it { should validate_attachment_size(:profile_pic).less_than(2.megabytes) }
+  it 'validates :profile_pic content' do
+    should validate_attachment_content_type(:profile_pic)
+      .allowing('image/jpeg', 'image/gif', 'image/png')
+      .rejecting('text/plain', 'text/xml')
+  end
 
   describe 'has_secure_password method' do
     it 'validates password' do

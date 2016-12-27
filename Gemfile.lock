@@ -40,6 +40,12 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.3)
     ast (2.3.0)
+    aws-sdk (2.3.22)
+      aws-sdk-resources (= 2.3.22)
+    aws-sdk-core (2.3.22)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.3.22)
+      aws-sdk-core (= 2.3.22)
     bcrypt (3.1.11)
     bitters (1.0.0)
       bourbon (>= 3.2)
@@ -60,6 +66,10 @@ GEM
     capybara-webkit (1.11.1)
       capybara (>= 2.3.0, < 2.8.0)
       json
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -86,6 +96,7 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jmespath (1.3.1)
     jquery-rails (4.2.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -100,11 +111,18 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    paperclip (5.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
     parser (2.3.3.1)
       ast (~> 2.2)
     pg (0.19.0)
@@ -218,6 +236,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk (~> 2.3.0)
   bcrypt
   bitters
   bourbon
@@ -229,6 +248,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  paperclip (~> 5.0.0)
   pg
   puma
   quiet_assets

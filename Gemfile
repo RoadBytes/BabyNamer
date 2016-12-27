@@ -33,6 +33,10 @@ gem 'pg'
 gem 'puma'
 gem 'simple_form'
 
+# Paperclip
+gem 'aws-sdk', '~> 2.3.0'
+gem 'paperclip', '~> 5.0.0'
+
 group :test do
   gem 'capybara-webkit'
   gem 'database_cleaner'

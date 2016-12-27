@@ -10,7 +10,9 @@ class Vote < ActiveRecord::Base
   end
 
   def self.vote_count_today(user_id)
-    where(user_id: user_id).where('created_at::date = ?', Date.today).count
+    where(user_id: user_id)
+      .where('created_at::date = ?', Time.now.utc.to_date)
+      .count
   end
 
   def self.votes_left_for_today(user_id)
