@@ -3,14 +3,10 @@ class VotesController < ApplicationController
   before_action :require_user
 
   def create
-    attributes = vote_params.merge(user_id: current_user.id)
-    vote = Vote.new(attributes)
+    attributes    = vote_params.merge(user_id: current_user.id)
+    voting_object = UserVote.new(input: attributes)
 
-    flash[:notice] = if vote.save
-                       'Vote recorded'
-                     else
-                       vote.errors.full_messages.join(', ')
-                     end
+    flash[:notice] = voting_object.message
 
     redirect_to baby_names_path
   end

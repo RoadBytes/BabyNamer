@@ -5,6 +5,19 @@ class User < ActiveRecord::Base
   has_many  :comments
   has_many  :votes
 
+  has_attached_file :profile_pic,
+                    styles: { medium: '300x300>',
+                              thumb: '100x100>' },
+                    default_url: '/images/:style/missing.png'
+  validates_attachment :profile_pic,
+                       content_type: {
+                         content_type: [
+                           'image/jpeg', 'image/png',
+                           'image/gif', 'image/jpg'
+                         ]
+                       },
+                       size: { in: 0..2.megabytes }
+
   has_secure_password
 
   def handle
