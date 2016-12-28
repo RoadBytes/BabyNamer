@@ -10,11 +10,15 @@
   </div>
 <% end %>
 
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for @user, :html => {:multipart => true} do |f| %>
   <%= f.input :name %>
   <%= f.input :email %>
   <%= f.input :password, required: true %>
   <%= f.input :password_confirmation, required: true %>
+
+  <% if logged_in? %>
+    <%= f.input :profile_pic, as: :file %>
+  <% end %>
 
   <%= f.button :submit, id: 'submit_user' %>
 <% end %>
