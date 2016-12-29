@@ -1,10 +1,37 @@
-<%= link_to 'Home', root_path %>
-
-<% if logged_in? %>
-  <%= link_to 'New Baby Name', new_baby_name_path, id: 'new_baby_name' %>
-  <%= link_to 'Edit Profile', edit_user_path(current_user), id: 'edit_user' %>
-  <%= link_to 'Sign Out', session_path, method: :delete, id: 'destroy_session' %>
-<% else %>
-  <%= link_to 'Sign Up', new_user_path, id: 'new_user' %>
-  <%= link_to 'Sign In', new_session_path, id: 'new_session' %>
-<% end %>
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <%= link_to root_path, class: 'logo' do %>
+      <%= image_tag 'baby_namer_logo.png' %>
+    <% end %>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <% if logged_in? %>
+          <li class="nav-link">
+            <%= link_to 'New Baby Name',
+                        new_baby_name_path,
+                        id: 'new_baby_name' %>
+          </li>
+          <li class="nav-link">
+            <%= link_to 'Edit Profile',
+                        edit_user_path(current_user),
+                        id: 'edit_user' %>
+          </li>
+          <li class="nav-link">
+            <%= link_to 'Sign Out',
+                        session_path,
+                        method: :delete,
+                        id: 'destroy_session' %>
+          </li>
+        <% else %>
+          <li class="nav-link">
+            <%= link_to 'Sign Up', new_user_path, id: 'new_user' %>
+          </li>
+          <li class="nav-link">
+            <%= link_to 'Sign In', new_session_path, id: 'new_session' %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

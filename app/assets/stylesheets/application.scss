@@ -10,9 +10,10 @@
  *
  */
 
+@import 'scaffolds';
 @import 'bourbon';
 @import 'base/base';
 @import 'neat';
+@import 'navigation';
 @import 'baby_names';
-@import 'scaffolds';
 @import 'users';
