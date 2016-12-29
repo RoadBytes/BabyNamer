@@ -29,6 +29,7 @@ gem 'bcrypt'
 gem 'vote_gem_jay'
 
 gem 'bourbon'
+gem 'neat'
 gem 'pg'
 gem 'puma'
 gem 'simple_form'

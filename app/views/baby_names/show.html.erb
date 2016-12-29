@@ -12,6 +12,9 @@
 <p>
   <strong>Suggested By:</strong>
   <% if @baby_name.user %>
+    <span>
+      <%= image_tag @baby_name.user.profile_pic.url(:thumb) %>
+    </span>
     <%= link_to @baby_name.user_handle, user_path(@baby_name.user) %>
   <% else %>
     <%= @baby_name.user_handle %>

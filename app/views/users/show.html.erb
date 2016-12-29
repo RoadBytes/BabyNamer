@@ -1,4 +1,3 @@
-
 <%= image_tag @user.profile_pic.url(:medium) %>
 <h1><%= @user.handle %>'s Suggested Names</h1>
 
@@ -11,8 +10,7 @@
       <th>Background</th>
       <th>Vote Count</th>
       <% if logged_in? %>
-        <th>Vote Up</th>
-        <th>Vote Down</th>
+        <th>Vote</th>
       <% end %>
     </tr>
   </thead>
@@ -31,17 +29,16 @@
                                 voteable_id: baby_name.id }),
                         method: 'post',
                         id: "baby_name_up_vote_#{baby_name.id}") do %>
-              <p>up vote</p>
+              <span>Like</span>
             <% end %>
-          </td>
-          <td>
+            <span>/</span>
             <%= link_to(votes_path(baby_name,
                         vote: { vote: 'false',
                                 voteable_type: 'BabyName',
                                 voteable_id: baby_name.id }),
                         method: 'post',
                         id: "baby_name_down_vote_#{baby_name.id}") do %>
-              <p>down vote</p>
+              <span>Dislike</span>
             <% end %>
           </td>
         <% end %>
@@ -85,6 +82,11 @@
     <% @user.received_comments.each do |comment| %>
       <tr>
         <td colspan='3'>
+          <% if comment.creator %>
+            <span>
+              <%= image_tag comment.creator.profile_pic.url(:thumb) %>
+            </span>
+          <% end %>
           <%= link_to comment.creator.handle, comment.creator,
                       id: "show_user_#{comment.creator.try(:id)}" %>
         </td>

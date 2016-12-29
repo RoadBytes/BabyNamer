@@ -7,8 +7,7 @@
       <th>Suggested By</th>
       <th>Vote Count</th>
       <% if logged_in? %>
-        <th>Vote Up</th>
-        <th>Vote Down</th>
+        <th>Vote</th>
       <% end %>
     </tr>
   </thead>
@@ -16,8 +15,10 @@
   <tbody>
     <% @baby_names.each do |baby_name| %>
       <tr>
-        <td><%= link_to baby_name.name, baby_name,
-                                    id: "show_baby_name_#{baby_name.id}" %></td>
+        <td>
+          <h1><%= link_to baby_name.name, baby_name,
+                          id: "show_baby_name_#{baby_name.id}" %></h1>
+        </td>
         <td>
           <% if baby_name.user %>
             <span>
@@ -37,17 +38,16 @@
                                 voteable_id: baby_name.id }),
                         method: 'post',
                         id: "baby_name_up_vote_#{baby_name.id}") do %>
-              <p>up vote</p>
+              <span>Like</span>
             <% end %>
-          </td>
-          <td>
+            <span>/</span>
             <%= link_to(votes_path(baby_name,
                         vote: { vote: 'false',
                                 voteable_type: 'BabyName',
                                 voteable_id: baby_name.id }),
                         method: 'post',
                         id: "baby_name_down_vote_#{baby_name.id}") do %>
-              <p>down vote</p>
+              <span>Dislike</span>
             <% end %>
           </td>
         <% end %>
