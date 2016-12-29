@@ -1,5 +1,5 @@
 
-<%= image_tag @user.profile_pic.url %>
+<%= image_tag @user.profile_pic.url(:medium) %>
 <h1><%= @user.handle %>'s Suggested Names</h1>
 
 <h1>Suggested Names:</h1>
@@ -50,4 +50,49 @@
   </tbody>
 </table>
 
+<% if logged_in? %>
+  <div>
+    <%= simple_form_for :comment, { url: comments_path} do |f| %>
+      <%= f.label :body, 'Add a Comment' %>
+      <br>
+      <%= f.input_field :body,
+                  label: 'Add a Comment',
+                  as: :text,
+                  id: "user_#{@user.id}_comment" %>
+      <br>
+      <%= f.input :commentable_id,
+                  as: :hidden,
+                  input_html: { value: @user.id } %>
+      <%= f.input :commentable_type,
+                  as: :hidden, input_html: { value: @user.class } %>
+      <%= f.input :user_id,
+                  as: :hidden, input_html: { value: current_user.id } %>
 
+      <%= f.button :submit, id: 'submit_new_comment' %>
+    <% end %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan='3'>User</th>
+      <th colspan='8'>Comment</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.received_comments.each do |comment| %>
+      <tr>
+        <td colspan='3'>
+          <%= link_to comment.creator.handle, comment.creator,
+                      id: "show_user_#{comment.creator.try(:id)}" %>
+        </td>
+        <td colspan='8'>
+          <%= comment.body %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

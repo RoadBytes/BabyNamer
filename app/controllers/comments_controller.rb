@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
 
   def create
     attributes = comment_params.merge(user_id: current_user.id)
-    Comment.create(attributes)
+    @comment   = Comment.create(attributes)
 
-    redirect_to baby_name_path(attributes[:commentable_id])
+    redirect_to @comment.commentable
   end
 
   private

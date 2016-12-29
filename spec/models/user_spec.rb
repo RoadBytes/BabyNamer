@@ -45,4 +45,15 @@ RSpec.describe User, type: :model do
       expect(unnamed.handle).to eq 'asdf@asdf.com'
     end
   end
+
+  describe '#received_comments' do
+    it 'returns comments user left' do
+      named   = FactoryGirl.create(:user, name: 'Me')
+      comment = FactoryGirl.create(:comment,
+                                   commentable_type: named.class,
+                                   commentable_id: named.id)
+
+      expect(named.received_comments).to eq [comment]
+    end
+  end
 end

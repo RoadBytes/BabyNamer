@@ -18,8 +18,15 @@
       <tr>
         <td><%= link_to baby_name.name, baby_name,
                                     id: "show_baby_name_#{baby_name.id}" %></td>
-        <td><%= link_to baby_name.user_handle, baby_name.user,
-                                    id: "show_user_#{baby_name.user.try(:id)}" %></td>
+        <td>
+          <% if baby_name.user %>
+            <span>
+              <%= image_tag baby_name.user.profile_pic.url(:thumb) %>
+            </span>
+          <% end %>
+            <%= link_to baby_name.user_handle, baby_name.user,
+                        id: "show_user_#{baby_name.user.try(:id)}" %>
+        </td>
         <td><%= baby_name.vote_count %></td>
 
         <% if logged_in? %>

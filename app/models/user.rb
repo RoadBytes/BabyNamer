@@ -2,7 +2,7 @@
 class User < ActiveRecord::Base
   validates :email, presence: true
   has_many  :baby_names
-  has_many  :comments
+  has_many  :comments, as: :commentable
   has_many  :votes
 
   has_attached_file :profile_pic,
@@ -22,5 +22,9 @@ class User < ActiveRecord::Base
 
   def handle
     name.blank? ? email : name
+  end
+
+  def received_comments
+    comments.order('created_at DESC')
   end
 end
