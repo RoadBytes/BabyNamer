@@ -3,9 +3,14 @@
     <%= link_to root_path, class: 'logo' do %>
       <%= image_tag 'baby_namer_logo.png' %>
     <% end %>
-    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      v
+    </a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link">
+          <%= link_to 'About', page_path('about') %>
+        </li>
         <% if logged_in? %>
           <li class="nav-link">
             <%= link_to 'New Baby Name',

@@ -34,6 +34,9 @@ gem 'pg'
 gem 'puma'
 gem 'simple_form'
 
+# For static pages
+gem 'high_voltage', '~> 3.0.0'
+
 # Paperclip
 gem 'aws-sdk', '~> 2.3.0'
 gem 'paperclip', '~> 5.0.0'
