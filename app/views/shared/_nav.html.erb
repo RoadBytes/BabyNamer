@@ -8,14 +8,15 @@
     </a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
-        <li class="nav-link">
-          <%= link_to 'About', page_path('about') %>
-        </li>
         <% if logged_in? %>
           <li class="nav-link">
-            <%= link_to 'New Baby Name',
+            <%= link_to 'Add Baby Name',
                         new_baby_name_path,
+                        class: 'nav-button',
                         id: 'new_baby_name' %>
+          </li>
+          <li class="nav-link">
+            <%= link_to 'About', page_path('about') %>
           </li>
           <li class="nav-link">
             <%= link_to 'Edit Profile',
@@ -29,6 +30,9 @@
                         id: 'destroy_session' %>
           </li>
         <% else %>
+          <li class="nav-link">
+            <%= link_to 'About', page_path('about') %>
+          </li>
           <li class="nav-link">
             <%= link_to 'Sign Up', new_user_path, id: 'new_user' %>
           </li>

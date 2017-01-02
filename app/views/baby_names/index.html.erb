@@ -20,3 +20,10 @@
     </div>
   </li>
 </ul>
+
+<% if logged_in? %>
+  <%= link_to 'Add Baby Name',
+              new_baby_name_path,
+              class: 'nav-button',
+              id: 'bottom_new_baby_name' %>
+<% end %>
