@@ -1,6 +1,9 @@
 # This models users/people of the app
 class User < ActiveRecord::Base
-  validates :email, presence: true
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   has_many  :baby_names
   has_many  :comments, as: :commentable
   has_many  :votes

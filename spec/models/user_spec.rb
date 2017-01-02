@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }
   it { should have_many(:baby_names) }
   it { should have_many(:comments) }
@@ -12,6 +11,12 @@ RSpec.describe User, type: :model do
     should validate_attachment_content_type(:profile_pic)
       .allowing('image/jpeg', 'image/gif', 'image/png')
       .rejecting('text/plain', 'text/xml')
+  end
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email).case_insensitive }
+  describe '#email' do
+    it { should allow_value('email@addresse.foo').for(:email) }
+    it { should_not allow_value('foo').for(:email) }
   end
 
   describe 'has_secure_password method' do
