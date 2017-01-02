@@ -13,7 +13,13 @@
 @import 'scaffolds';
 @import 'bourbon';
 @import 'base/base';
-@import 'neat';
+@import 'base/grid-settings';
+@import 'neat/neat';
 @import 'navigation';
 @import 'baby_names';
+@import 'baby_name_index';
 @import 'users';
+
+div.container {
+  @include outer-container;
+}

@@ -1,3 +1,54 @@
 // Place all the styles related to the BabyNames controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Index View
+
+.listed-baby-name__featured {
+  background-color: white;
+  font-family: 'Radley', serif;
+  font-size: 40px;
+  line-height: 2;
+  text-transform: capitalize;
+}
+
+.listed-baby-name__name, .listed-baby-name__name-data {
+  text-align: center;
+  width: 40%;
+}
+
+.listed-baby-name__rank, .listed-baby-name__rank-data {
+  text-align: center;
+  width: 10%;
+}
+
+.listed-baby-name__suggested-by, .listed-baby-name__suggested-by-data {
+  text-align: center;
+  width: 20%;
+}
+
+.listed-baby-name__vote-count, .listed-baby-name__vote-count-data {
+  text-align: center;
+  width: 10%;
+}
+
+// Show View
+
+.baby-name-show__featured {
+  background-color: white;
+  border-style: inset;
+  font-family: 'Radley', serif;
+  font-size: 40px;
+  line-height: 2;
+  text-align: center;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.baby-name-show__background {
+  margin-left: 50px;
+}
+
+.baby-name-show__suggested-by {
+  margin-left: 50px;
+}

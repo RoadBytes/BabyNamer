@@ -1,57 +1,22 @@
-<table>
-  <thead>
-    <tr>
-      <th>Baby Name</th>
-      <th>Suggested By</th>
-      <th>Vote Count</th>
-      <% if logged_in? %>
-        <th>Vote</th>
-      <% end %>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @baby_names.each do |baby_name| %>
-      <tr>
-        <td>
-          <h1><%= link_to baby_name.name, baby_name,
-                          id: "show_baby_name_#{baby_name.id}" %></h1>
-        </td>
-        <td>
-          <% if baby_name.user %>
-            <span>
-              <%= image_tag baby_name.user.profile_pic.url(:thumb) %>
-            </span>
-          <% end %>
-            <%= link_to baby_name.user_handle, baby_name.user,
-                        id: "show_user_#{baby_name.user.try(:id)}" %>
-        </td>
-        <td><%= baby_name.vote_count %></td>
-
-        <% if logged_in? %>
-          <td>
-            <%= link_to(votes_path(baby_name,
-                        vote: { vote: 'true',
-                                voteable_type: 'BabyName',
-                                voteable_id: baby_name.id }),
-                        method: 'post',
-                        id: "baby_name_up_vote_#{baby_name.id}") do %>
-              <span>Like</span>
-            <% end %>
-            <span>/</span>
-            <%= link_to(votes_path(baby_name,
-                        vote: { vote: 'false',
-                                voteable_type: 'BabyName',
-                                voteable_id: baby_name.id }),
-                        method: 'post',
-                        id: "baby_name_down_vote_#{baby_name.id}") do %>
-              <span>Dislike</span>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<ul class="accordion-tabs">
+  <li class="tab-header-and-content">
+    <a href="javascript:void(0)" class="is-active tab-link">Top Names</a>
+    <div class="tab-content">
+      <%= render 'baby_names/partials/list', name_list: @most_popular %>
+    </div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="javascript:void(0)" class="tab-link">Latest Names</a>
+    <div class="tab-content">
+      <%= render 'baby_names/partials/list',
+                 name_list: @latest, list_name: 'latest' %>
+    </div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="javascript:void(0)" class="tab-link">All Names</a>
+    <div class="tab-content">
+      <%= render 'baby_names/partials/alphabetic_names' %>
+    </div>
+  </li>
+</ul>

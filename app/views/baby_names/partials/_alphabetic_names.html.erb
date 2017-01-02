@@ -1,0 +1,5 @@
+<p>In alphabetical order:</p>
+<% @alphabetic.each do |baby_name| %>
+  <span><%= link_to baby_name.name, baby_name %></span>
+  <span> | </span>
+<% end %>

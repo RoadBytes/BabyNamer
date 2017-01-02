@@ -1,28 +1,29 @@
-<%= image_tag @user.profile_pic.url(:medium) %>
+<div class='user-show__profile-pic'>
+  <%= image_tag @user.profile_pic.url(:medium) %>
+</div>
 <h1><%= @user.handle %>'s Suggested Names</h1>
-
-<h1>Suggested Names:</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Baby Name</th>
-      <th>Background</th>
-      <th>Vote Count</th>
+
+      <th class='user-baby-name__name'>Baby Name</th>
+      <th class='user-baby-name__background'>Background</th>
+      <th class='user-baby-name__vote-count'>Vote Count</th>
       <% if logged_in? %>
-        <th>Vote</th>
+        <th class='user-baby-name__vote-count'>Vote</th>
       <% end %>
     </tr>
   </thead>
   <tbody>
     <% @user.baby_names.each do |baby_name| %>
       <tr>
-        <td><%= link_to baby_name.name, baby_name,
+        <td class='user-baby-name__name-data'><%= link_to baby_name.name, baby_name,
                                     id: "show_baby_name_#{baby_name.id}" %></td>
-        <td><%= baby_name.background %></td>
-        <td><%= baby_name.vote_count %></td>
+        <td class='user-baby-name__background-data'><%= baby_name.background %></td>
+        <td class='user-baby-name__vote-count-data'><%= baby_name.vote_count %></td>
         <% if logged_in? %>
-          <td>
+          <td class='user-baby-name__vote-count'>
             <%= link_to(votes_path(baby_name,
                         vote: { vote: 'true',
                                 voteable_type: 'BabyName',
@@ -83,9 +84,9 @@
       <tr>
         <td colspan='3'>
           <% if comment.creator %>
-            <span>
+            <p>
               <%= image_tag comment.creator.profile_pic.url(:thumb) %>
-            </span>
+            </p>
           <% end %>
           <%= link_to comment.creator.handle, comment.creator,
                       id: "show_user_#{comment.creator.try(:id)}" %>

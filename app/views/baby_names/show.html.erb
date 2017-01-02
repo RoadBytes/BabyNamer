@@ -2,24 +2,30 @@
   <strong>Name:</strong>
 </p>
 
-<h1><%= @baby_name.name %></h1>
-
-<p>
-  <strong>Background:</strong>
-  <%= @baby_name.background %>
-</p>
+<div class='baby-name-show__featured'><%= @baby_name.name %></div>
 
 <p>
   <strong>Suggested By:</strong>
-  <% if @baby_name.user %>
-    <span>
-      <%= image_tag @baby_name.user.profile_pic.url(:thumb) %>
-    </span>
-    <%= link_to @baby_name.user_handle, user_path(@baby_name.user) %>
-  <% else %>
-    <%= @baby_name.user_handle %>
-  <% end %>
+  <div class='baby-name-show__suggested-by'>
+    <% if @baby_name.user %>
+      <p>
+        <%= image_tag @baby_name.user.profile_pic.url(:thumb) %>
+      </p>
+      <%= link_to @baby_name.user_handle, user_path(@baby_name.user) %>
+    <% else %>
+      <%= @baby_name.user_handle %>
+    <% end %>
+  </div>
 </p>
+
+<p>
+  <strong>Background:</strong>
+  <div class='baby-name-show__background'>
+    <%= @baby_name.background %>
+  </div>
+</p>
+
+<hr>
 
 <% if logged_in? %>
   <% if @baby_name.user == current_user %>
@@ -46,6 +52,7 @@
       <%= f.button :submit, id: 'submit_new_comment' %>
     <% end %>
   </div>
+  <hr>
 <% end %>
 
 <table>
@@ -57,7 +64,7 @@
   </thead>
 
   <tbody>
-    <% @baby_name.comments.each do |comment| %>
+    <% @baby_name.comments.order('created_at DESC').each do |comment| %>
       <tr>
         <td colspan='3'>
           <%= link_to comment.creator.handle, comment.creator,

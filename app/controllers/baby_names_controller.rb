@@ -4,7 +4,9 @@ class BabyNamesController < ApplicationController
   before_action :require_user,  only: [:new, :edit, :update, :destroy]
 
   def index
-    @baby_names = BabyName.all.sort_by(&:vote_count).reverse
+    @alphabetic   = BabyName.alphabetic
+    @most_popular = BabyName.most_popular
+    @latest       = BabyName.latest
   end
 
   def show; end

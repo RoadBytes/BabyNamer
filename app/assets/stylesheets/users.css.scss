@@ -1,3 +1,24 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Show View
+
+.user-show__profile-pic {
+  @include fill-parent;
+}
+
+.user-baby-name__name, .user-baby-name__name-data {
+  text-align: center;
+  width: 30%;
+}
+
+.user-baby-name__background, .user-baby-name__background-data {
+  text-align: center;
+  width: 50%;
+}
+
+.user-baby-name__vote-count, .user-baby-name__vote-count-data {
+  text-align: center;
+  width: 10%;
+}
