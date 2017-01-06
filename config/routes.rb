@@ -1,4 +1,8 @@
 BabyNamer::Application.routes.draw do
+  get 'baby_name_users/create'
+
+  get 'baby_name_users/destroy'
+
   root to: 'baby_names#index'
 
   resources :baby_names
