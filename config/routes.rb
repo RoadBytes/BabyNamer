@@ -1,8 +1,4 @@
 BabyNamer::Application.routes.draw do
-  get 'baby_name_users/create'
-
-  get 'baby_name_users/destroy'
-
   root to: 'baby_names#index'
 
   resources :baby_names
@@ -10,5 +6,6 @@ BabyNamer::Application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :votes, only: :create
   resources :comments, only: :create
+  resources :favorites, only: [:create, :destroy]
   delete    '/sessions/', to: 'sessions#destroy', as: :session
 end

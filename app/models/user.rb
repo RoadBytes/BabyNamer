@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   has_many  :baby_name_users
-  has_many  :favorites, through: :baby_name_users, class_name: 'BabyName'
+  has_many  :favorites, through: :baby_name_users,
+            class_name: 'BabyName',
+            foreign_key: 'baby_name_id'
   has_many  :baby_names
   has_many  :comments, as: :commentable
   has_many  :votes
