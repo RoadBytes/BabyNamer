@@ -44,7 +44,7 @@
                                 voteable_id: baby_name.id }),
                         method: 'post',
                         id: "#{list_name}baby_name_up_vote_#{baby_name.id}") do %>
-              <span>Like</span>
+              <span>+</span>
             <% end %>
             <span>/</span>
             <%= link_to(votes_path(baby_name,
@@ -53,7 +53,7 @@
                                 voteable_id: baby_name.id }),
                         method: 'post',
                         id: "#{list_name}baby_name_down_vote_#{baby_name.id}") do %>
-              <span>Dislike</span>
+              <span>-</span>
             <% end %>
           </td>
         <% end %>
