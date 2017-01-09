@@ -6,13 +6,17 @@ class CommentsController < ApplicationController
     attributes = comment_params.merge(user_id: current_user.id)
     @comment   = Comment.create(attributes)
 
-    redirect_to @comment.commentable
+    if @comment.commentable_type =~ /^Page/
+      redirect_to page_path('about')
+    else
+      redirect_to @comment.commentable
+    end
   end
 
   private
 
   def comment_params
     params.require(:comment).permit(:body, :commentable_type,
-                                    :commentable_id, :user_id)
+                                    :commentable_id)
   end
 end

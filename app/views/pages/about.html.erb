@@ -22,3 +22,54 @@
 
 <%= link_to 'Sign In', new_session_path %> or
 <%= link_to 'Sign Up', new_user_path %> to comment on this video
+
+<% if logged_in? %>
+  <hr>
+  <div>
+    <%= simple_form_for :comment, { url: comments_path} do |f| %>
+      <%= f.label :body, 'Add a Comment' %>
+      <br>
+      <%= f.input_field :body,
+                  label: 'Add a Comment', as: :text, id: 'about_page_comment' %>
+      <br>
+      <%= f.input :commentable_id,
+                  as: :hidden,
+                  input_html: { value: 1 } %>
+      <%= f.input :commentable_type,
+                  as: :hidden, input_html: { value: 'PageAbout' } %>
+      <%= f.input :user_id,
+                  as: :hidden, input_html: { value: current_user.id } %>
+
+      <%= f.button :submit, id: 'submit_new_comment' %>
+    <% end %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan='3'>User</th>
+      <th colspan='8'>Comment</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td colspan='3'>
+          <% if comment.creator %>
+            <p>
+              <%= image_tag comment.creator.profile_pic.url(:thumb) %>
+            </p>
+          <% end %>
+          <%= link_to comment.creator.handle, comment.creator,
+                      id: "show_user_#{comment.creator.try(:id)}" %>
+        </td>
+        <td colspan='8'>
+          <%= comment.body %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
