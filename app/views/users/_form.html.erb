@@ -13,8 +13,10 @@
 <%= simple_form_for @user, :html => {:multipart => true} do |f| %>
   <%= f.input :name %>
   <%= f.input :email %>
-  <%= f.input :password, required: true %>
-  <%= f.input :password_confirmation, required: true %>
+  <% unless logged_in? %>
+    <%= f.input :password, required: true %>
+    <%= f.input :password_confirmation, required: true %>
+  <% end %>
 
   <% if logged_in? %>
     <%= f.input :profile_pic, as: :file %>
