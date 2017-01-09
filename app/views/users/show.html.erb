@@ -1,6 +1,14 @@
 <div class='user-show__profile-pic'>
   <%= image_tag @user.profile_pic.url(:medium) %>
 </div>
+
+<h1><%= @user.handle %>'s Favorited Names</h1>
+<% @user.favorites.each do |baby_name| %>
+  <span><%= link_to baby_name.name, baby_name %></span>
+<% end %>
+
+<hr>
+
 <h1><%= @user.handle %>'s Suggested Names</h1>
 
 <table>
@@ -49,6 +57,7 @@
 </table>
 
 <% if logged_in? %>
+  <hr>
   <div>
     <%= simple_form_for :comment, { url: comments_path} do |f| %>
       <%= f.label :body, 'Add a Comment' %>

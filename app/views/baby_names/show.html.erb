@@ -25,6 +25,24 @@
   </div>
 </p>
 
+<% if logged_in? %>
+  <% if current_user.favorites.include? @baby_name %>
+    <%= button_to "UnFavorite this name: #{@baby_name.name.capitalize}",
+                  favorite_path(
+                  favorite: { baby_name_id: @baby_name.id,
+                              user_id: current_user.id }),
+                  method: :delete,
+                  id: "unfavorite_baby_name_#{@baby_name.id}" %>
+  <% else %>
+    <%= button_to "Favorite this name: #{@baby_name.name.capitalize}",
+                  favorites_path(
+                  favorite: { baby_name_id: @baby_name.id,
+                              user_id: current_user.id }),
+                  method: :post,
+                  id: "favorite_baby_name_#{@baby_name.id}" %>
+  <% end %>
+<% end %>
+
 <hr>
 
 <% if logged_in? %>
@@ -37,9 +55,9 @@
       <%= f.label :body, 'Add a Comment' %>
       <br>
       <%= f.input_field :body,
-                  label: 'Add a Comment',
-                  as: :text,
-                  id: "baby_name_#{@baby_name.id}_comment" %>
+                        label: 'Add a Comment',
+                        as: :text,
+                        id: "baby_name_#{@baby_name.id}_comment" %>
       <br>
       <%= f.input :commentable_id,
                   as: :hidden,
