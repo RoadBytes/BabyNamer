@@ -1,6 +1,7 @@
 .about {
-
   h1 {
+    @include fill-parent();
+    @include row(table);
     font-size:  5em;
     text-align: center;
   }

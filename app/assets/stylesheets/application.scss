@@ -23,6 +23,20 @@
 
 div.container {
   @include outer-container;
+
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  iframe {
+    @include span-columns(12);
+
+    @include media($medium-screen-up) {
+      @include span-columns(6);
+      @include shift(3);
+
+    }
+  }
+
 }
 
 $base-spacing: 1.5em !default;
