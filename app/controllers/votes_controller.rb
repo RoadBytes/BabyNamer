@@ -6,9 +6,10 @@ class VotesController < ApplicationController
     attributes    = vote_params.merge(user_id: current_user.id)
     voting_object = UserVote.new(input: attributes)
 
-    flash[:notice] = voting_object.message
+    flash[:notice]    = voting_object.message
+    flash['tab_name'] = params['tab_name']
 
-    redirect_to baby_names_path
+    redirect_to :back || baby_names_path
   end
 
   private

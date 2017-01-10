@@ -26,6 +26,32 @@
 </p>
 
 <% if logged_in? %>
+  <p>
+    <strong>Vote:</strong>
+  </p>
+
+  <p>
+    <%= link_to(votes_path(@baby_name,
+                vote: { vote: 'true',
+                        voteable_type: 'BabyName',
+                        voteable_id: @baby_name.id },
+                tab_name: 'user'),
+                method: 'post',
+                id: "baby_name_up_vote_#{@baby_name.id}") do %>
+      <span>+ Vote For This Name</span>
+    <% end %>
+    <span>/</span>
+    <%= link_to(votes_path(@baby_name,
+                vote: { vote: 'false',
+                        voteable_type: 'BabyName',
+                        voteable_id: @baby_name.id },
+                tab_name: 'user'),
+                method: 'post',
+                id: "baby_name_down_vote_#{@baby_name.id}") do %>
+      <span>- Vote Against This Name</span>
+    <% end %>
+  </p>
+
   <% if current_user.favorites.include? @baby_name %>
     <%= button_to "UnFavorite this name: #{@baby_name.name.capitalize}",
                   favorite_path(
@@ -72,6 +98,7 @@
   </div>
   <hr>
 <% end %>
+
 
 <table>
   <thead>

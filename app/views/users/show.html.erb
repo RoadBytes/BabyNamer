@@ -35,7 +35,8 @@
             <%= link_to(votes_path(baby_name,
                         vote: { vote: 'true',
                                 voteable_type: 'BabyName',
-                                voteable_id: baby_name.id }),
+                                voteable_id: baby_name.id },
+                        tab_name: 'user'),
                         method: 'post',
                         id: "baby_name_up_vote_#{baby_name.id}") do %>
               <span>+</span>
@@ -44,7 +45,8 @@
             <%= link_to(votes_path(baby_name,
                         vote: { vote: 'false',
                                 voteable_type: 'BabyName',
-                                voteable_id: baby_name.id }),
+                                voteable_id: baby_name.id },
+                        tab_name: 'user'),
                         method: 'post',
                         id: "baby_name_down_vote_#{baby_name.id}") do %>
               <span>-</span>

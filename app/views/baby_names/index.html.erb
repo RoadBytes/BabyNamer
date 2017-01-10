@@ -1,20 +1,26 @@
 
 <ul class="accordion-tabs">
   <li class="tab-header-and-content">
-    <a href="javascript:void(0)" class="is-active tab-link">Top Names</a>
+    <a href="javascript:void(0)" class="<%= tab_status('') %> tab-link">
+      Top Names
+    </a>
     <div class="tab-content">
       <%= render 'baby_names/partials/list', name_list: @most_popular %>
     </div>
   </li>
   <li class="tab-header-and-content">
-    <a href="javascript:void(0)" class="tab-link">Latest Names</a>
+    <a id='latest' href="javascript:void(0)" class="<%= tab_status('latest') %> tab-link">
+      Latest Names
+    </a>
     <div class="tab-content">
       <%= render 'baby_names/partials/list',
                  name_list: @latest, list_name: 'latest' %>
     </div>
   </li>
   <li class="tab-header-and-content">
-    <a href="javascript:void(0)" class="tab-link">All Names</a>
+    <a id='all_names' href="javascript:void(0)" class="<%= tab_status('all_names') %> tab-link">
+      All Names
+    </a>
     <div class="tab-content">
       <%= render 'baby_names/partials/alphabetic_names' %>
     </div>
