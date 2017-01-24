@@ -14,6 +14,10 @@ class BabyName < ActiveRecord::Base
     all_names.order('lower(name) ASC')
   end
 
+  def comment_count
+    Comment.where(commentable: self).count
+  end
+
   def self.latest
     all_names.order(created_at: :desc).limit(50)
   end

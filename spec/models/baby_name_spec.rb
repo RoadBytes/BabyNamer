@@ -43,6 +43,21 @@ RSpec.describe BabyName, type: :model do
     end
   end
 
+  describe '.comment_count' do
+    it 'returns 0 when there are no comments' do
+      name = FactoryGirl.create(:baby_name)
+
+      expect(name.comment_count).to eq 0
+    end
+
+    it 'returns x when there are x comments' do
+      name = FactoryGirl.create(:baby_name)
+      FactoryGirl.create(:comment, commentable: name)
+
+      expect(name.comment_count).to eq 1
+    end
+  end
+
   describe '.latest' do
     it 'returns an empty array when there are no names' do
       names = BabyName.latest

@@ -5,10 +5,11 @@
     <tr>
       <th class='listed-baby-name__rank'>Rank</th>
       <th class='listed-baby-name__name'>Baby Name</th>
-      <th class='listed-baby-name__suggested-by'>Suggested By</th>
-      <th class='listed-baby-name__vote-count'>Vote Count</th>
+      <th class='listed-baby-name__suggested-by'>Suggester</th>
+      <th class='listed-baby-name__notes'>Notes</th>
+      <th class='listed-baby-name__vote-count'>Votes</th>
       <% if logged_in? %>
-        <th class='listed-baby-name__vote-count'>Vote</th>
+        <th class='listed-baby-name__vote-count'></th>
       <% end %>
     </tr>
   </thead>
@@ -34,6 +35,9 @@
             <% end %>
             <p><%= baby_name.user_handle %></p>
           <% end %>
+        </td>
+        <td class='listed-baby-name__notes-data'>
+          <p><%= baby_name.background %></p>
         </td>
         <td class='listed-baby-name__vote-count-data'><%= baby_name.vote_count %></td>
         <% if logged_in? %>

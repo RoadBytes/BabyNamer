@@ -14,12 +14,13 @@
 
 .listed-baby-name__name, .listed-baby-name__name-data {
   text-align: center;
-  width: 40%;
+  width: 30%;
 }
 
-.listed-baby-name__rank, .listed-baby-name__rank-data {
+.listed-baby-name__rank, .listed-baby-name__rank-data,
+.listed-baby-name__vote-count, .listed-baby-name__vote-count-data {
   text-align: center;
-  width: 10%;
+  width: 5%;
 }
 
 .listed-baby-name__suggested-by, .listed-baby-name__suggested-by-data {
@@ -27,9 +28,9 @@
   width: 20%;
 }
 
-.listed-baby-name__vote-count, .listed-baby-name__vote-count-data {
+.listed-baby-name__notes, .listed-baby-name__notes-data {
   text-align: center;
-  width: 10%;
+  width: 35%;
 }
 
 // Show View

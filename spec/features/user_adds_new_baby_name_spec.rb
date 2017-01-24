@@ -8,6 +8,7 @@ feature 'User adds new BabyName', type: 'feature' do
 
     verify_baby_name_database
     verify_user_association
+    verify_routed_page
     verify_index_page
   end
 
@@ -55,8 +56,15 @@ feature 'User adds new BabyName', type: 'feature' do
     expect(BabyName.all.size).to eq 0
   end
 
-  def verify_index_page
+  def verify_routed_page
     expect(page).to have_content 'Tallulah_1'
+    expect(page).to have_content "Bc I'm awesome"
+  end
+
+  def verify_index_page
+    visit '/'
+    expect(page).to have_content 'Tallulah_1'
+    expect(page).to have_content "Bc I'm awesome"
   end
 
   def verify_redirected_page
